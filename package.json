@@ -2,25 +2,22 @@
   "name": "react-kiss",
   "version": "1.0.0",
   "description": "Testing",
-  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "browserify": "browserify -t [ babelify ] main.js -o bundle.js"
-  },
-  "babel": {
-    "presets": [
-      "react"
-    ]
+    "build": "webpack"
   },
   "author": "Kyle Parisi (http://blog.kyleparisi.com)",
   "license": "ISC",
   "dependencies": {
-    "babel-preset-react": "^6.11.1",
-    "babelify": "^7.3.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
   },
   "devDependencies": {
-    "browserify": "^13.1.0"
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.11.0",
+    "webpack-cli": "^4.2.0"
   }
 }

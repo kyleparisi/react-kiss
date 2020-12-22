@@ -2,6 +2,6 @@
 
 ```bash
 npm install
-npm run browserify
+npm run build
 open index.html
 ```
