@@ -1,3 +1,4 @@
+let timeoutPointer;
 const handler = {
   get(target, key) {
     if (typeof target[key] === 'object' && target[key] !== null) {
@@ -8,8 +9,11 @@ const handler = {
   },
   set: function(obj, prop, value) {
     obj[prop] = value;
-    console.log("render")
-    render();
+    // optimization, if you set multiple values in the state on different
+    // lines you'll want the render function to be pushed to the bottom of the
+    // call stack
+    clearTimeout(timeoutPointer);
+    timeoutPointer = setTimeout(render, 0);
   }
 };
 const state = new Proxy({
@@ -30,6 +34,7 @@ const App = () => {
 window.App = App
 
 function render() {
+  console.log("render")
   ReactDOM.render(
     <App />,
     document.getElementById('app')
