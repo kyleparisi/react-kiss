@@ -14,13 +14,15 @@ const handler = {
     // call stack
     clearTimeout(timeoutPointer);
     timeoutPointer = setTimeout(render, 0);
+    return true;
   }
 };
 const state = new Proxy({
   name: "Kyle Parisi",
   nested: {
     value: true
-  }
+  },
+  todos: []
 }, handler);
 window.state = state;
 
@@ -29,6 +31,11 @@ const App = () => {
   return (<div>
     <h1>Hello {state.name}!</h1>
     {state.nested.value && <div>nested value</div>}
+    <ul>
+      {state.todos.map((todo, i) => {
+        return (<li key={i}>{todo}</li>)
+      })}
+    </ul>
   </div>)
 }
 window.App = App
