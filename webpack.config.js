@@ -1,10 +1,11 @@
 module.exports = {
   entry: "./index.jsx",
   mode: "development",
+  watch: true,
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.jsx$/,
         exclude: /(node_modules)/,
         loader: "babel-loader",
         options: { presets: ["@babel/preset-react"] }
